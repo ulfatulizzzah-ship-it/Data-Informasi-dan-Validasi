@@ -1,0 +1,1121 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pembelajaran Informatika - Ulfatul Izzah</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg,#10051f,#260642,#160326);
+    color: white;
+    font-size: 16px;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    background: #a000ff;
+    filter: blur(130px);
+    top: -100px;
+    left: -100px;
+    opacity: .45;
+    z-index: -1;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    background: #ff00a8;
+    filter: blur(130px);
+    bottom: -100px;
+    right: -100px;
+    opacity: .35;
+    z-index: -1;
+}
+
+button {
+    cursor: pointer;
+    transition: .3s;
+    font-size: 16px;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px #ff28b8;
+}
+
+/* COVER / SLIDE AWAL */
+
+#cover {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+}
+
+.cover-card {
+    max-width: 850px;
+    width: 100%;
+    text-align: center;
+    padding: 55px 30px;
+    border-radius: 30px;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.2);
+    box-shadow: 0 0 40px rgba(190,0,255,.35);
+    backdrop-filter: blur(15px);
+    animation: muncul 1s ease;
+}
+
+.cover-label {
+    display: inline-block;
+    padding: 11px 25px;
+    background: linear-gradient(90deg,#8500ff,#ff19a9);
+    border-radius: 30px;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+    font-size: 16px;
+}
+
+.cover-card h1 {
+    font-size: clamp(40px,7vw,68px);
+    font-weight: 900;
+    background: linear-gradient(90deg,#c77dff,#ff55c8,#fff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-bottom: 12px;
+}
+
+.cover-card h2 {
+    color: #ff8bdf;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.cover-desc {
+    line-height: 1.8;
+    color: #e6d4f5;
+    margin-bottom: 25px;
+}
+
+.identity {
+    display: inline-block;
+    text-align: left;
+    width: min(100%,430px);
+    padding: 20px 30px;
+    background: rgba(157,0,255,.15);
+    border: 1px solid rgba(255,40,184,.5);
+    border-radius: 18px;
+    margin-bottom: 30px;
+    line-height: 2;
+}
+
+.identity strong {
+    color: #ff8cdb;
+}
+
+.start-btn {
+    padding: 16px 40px;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    background: linear-gradient(90deg,#8500ff,#ff19a9);
+    box-shadow: 0 0 25px rgba(255,40,184,.5);
+}
+
+.cover-footer {
+    margin-top: 30px;
+    color: #cbb4db;
+}
+
+/* APLIKASI */
+
+#app {
+    display: none;
+}
+
+header {
+    padding: 30px 20px;
+    text-align: center;
+    background: linear-gradient(120deg,#6500bd,#c0009d,#6d00bd);
+    box-shadow: 0 5px 30px rgba(255,0,200,.3);
+}
+
+header h1 {
+    font-size: 32px;
+}
+
+header p {
+    margin-top: 8px;
+    color: #ffe0fa;
+}
+
+.container {
+    max-width: 1250px;
+    margin: 30px auto;
+    padding: 0 20px;
+    display: flex;
+    gap: 22px;
+}
+
+/* MENU */
+
+nav {
+    flex: 1;
+    min-width: 230px;
+    height: fit-content;
+    padding: 22px;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.13);
+    border-radius: 20px;
+}
+
+nav h3 {
+    color: #ff76d6;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #7930a9;
+}
+
+.nav-btn {
+    width: 100%;
+    display: block;
+    text-align: left;
+    padding: 13px;
+    margin-bottom: 10px;
+    color: white;
+    background: rgba(255,255,255,.06);
+    border: 1px solid transparent;
+    border-radius: 10px;
+}
+
+.nav-btn.active,
+.nav-btn:hover {
+    background: linear-gradient(90deg,#8500ff,#ed19b4);
+}
+
+.home-btn {
+    width: 100%;
+    padding: 13px;
+    margin-top: 10px;
+    color: white;
+    border: 1px solid #ff28b8;
+    border-radius: 10px;
+    background: rgba(255,40,184,.15);
+}
+
+/* KONTEN MATERI */
+
+main {
+    flex: 3;
+    min-width: 0;
+    min-height: 520px;
+    padding: 35px;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.13);
+    border-radius: 20px;
+}
+
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+    animation: muncul .5s ease;
+}
+
+@keyframes muncul {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h2 {
+    color: #ff78d8;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+h4 {
+    color: #ff9ce4;
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #e8dcef;
+    margin-bottom: 15px;
+}
+
+ul,ol {
+    padding-left: 25px;
+    line-height: 2;
+    font-size: 16px;
+}
+
+.highlight-box {
+    background: linear-gradient(120deg,rgba(157,0,255,.2),rgba(255,40,184,.12));
+    border-left: 4px solid #ff28b8;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 0 15px 15px 0;
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.highlight-box strong {
+    color: #ff8cdb;
+}
+
+.interactive-tool {
+    padding: 22px;
+    margin-top: 20px;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,40,184,.3);
+    border-radius: 15px;
+}
+
+.btn-action {
+    background: linear-gradient(90deg,#8500ff,#ff19a9);
+    color: white;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 9px;
+    margin: 5px;
+    font-weight: bold;
+}
+
+label {
+    display: block;
+    padding: 12px;
+    margin: 8px 0;
+    background: rgba(255,255,255,.05);
+    border-radius: 8px;
+    cursor: pointer;
+    line-height: 1.6;
+}
+
+label:hover {
+    background: rgba(255,40,184,.15);
+}
+
+input[type=radio] {
+    accent-color: #ff28b8;
+    margin-right: 8px;
+}
+
+.navigation-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 35px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,.15);
+}
+
+.progress {
+    height: 8px;
+    background: rgba(255,255,255,.15);
+    border-radius: 20px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 10%;
+    background: linear-gradient(90deg,#8500ff,#ff19a9);
+    transition: .4s;
+}
+
+#hasil-kuis {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+}
+
+footer {
+    padding: 25px;
+    text-align: center;
+    color: #cbb4db;
+    background: rgba(0,0,0,.25);
+    margin-top: 30px;
+    font-size: 16px;
+}
+
+@media(max-width:800px) {
+    .container {
+        flex-direction: column;
+    }
+
+    nav {
+        width: 100%;
+    }
+
+    main {
+        padding: 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- SLIDE PEMBUKA -->
+
+<section id="cover">
+
+<div class="cover-card">
+
+    <div class="cover-label">
+        ✨ MEDIA PEMBELAJARAN INTERAKTIF ✨
+    </div>
+
+    <h1>INFORMATIKA</h1>
+
+    <h2>DATA, INFORMASI, DAN VALIDASINYA</h2>
+
+    <p class="cover-desc">
+        Selamat Datang di Media Pembelajaran Interaktif
+        <br>
+        Mari belajar, memahami, dan menjelajahi dunia digital!
+    </p>
+
+    <div class="identity">
+        <p><strong>Nama:</strong> Ulfatul Izzah</p>
+        <p><strong>NIM:</strong> 250212082</p>
+        <p><strong>Materi Kelas:</strong> X (Sepuluh)</p>
+        <p><strong>Mata Pelajaran:</strong> Informatika</p>
+    </div>
+
+    <br>
+
+    <button class="start-btn" onclick="mulaiBelajar()">
+        🚀 MULAI BELAJAR
+    </button>
+
+    <div class="cover-footer">
+        BAB 1 • INFORMATIKA • PEMBELAJARAN DIGITAL
+    </div>
+
+</div>
+</section>
+
+
+<!-- HALAMAN UTAMA -->
+
+<div id="app">
+
+<header>
+    <h1>✦ INFORMATIKA ✦</h1>
+    <p>Bab 1: Data, Informasi, dan Validasinya</p>
+</header>
+
+<div class="container">
+
+<nav>
+    <h3>📚 DAFTAR MATERI</h3>
+
+    <button class="nav-btn active" onclick="showSection(0)">
+        🏠 Pendahuluan
+    </button>
+
+    <button class="nav-btn" onclick="showSection(1)">
+        📖 Data dan Informasi
+    </button>
+
+    <button class="nav-btn" onclick="showSection(2)">
+        🔎 Pencarian Informasi
+    </button>
+
+    <button class="nav-btn" onclick="showSection(3)">
+        🌐 Mesin Pencari
+    </button>
+
+    <button class="nav-btn" onclick="showSection(4)">
+        💻 Web Scraping
+    </button>
+
+    <button class="nav-btn" onclick="showSection(5)">
+        📊 Pengumpulan Data
+    </button>
+
+    <button class="nav-btn" onclick="showSection(6)">
+        🛡️ Validasi Informasi
+    </button>
+
+    <button class="nav-btn" onclick="showSection(7)">
+        🧠 Membaca Lateral
+    </button>
+
+    <button class="nav-btn" onclick="showSection(8)">
+        🔐 Keamanan Informasi
+    </button>
+
+    <button class="nav-btn" onclick="showSection(9)">
+        ⭐ Kesimpulan
+    </button>
+
+    <button class="nav-btn" onclick="showSection(10)">
+        📝 Kuis Interaktif
+    </button>
+
+    <button class="home-btn" onclick="kembaliAwal()">
+        ↩ Halaman Awal
+    </button>
+</nav>
+
+<main>
+
+<div class="progress">
+    <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<!-- SLIDE 1 -->
+
+<section class="content-section active">
+
+<h2>🌟 1. Pendahuluan</h2>
+
+<p>
+Di era digital, manusia dapat memperoleh informasi melalui
+berbagai media seperti internet, televisi, buku, dan media sosial.
+Namun, tidak semua informasi yang beredar dapat dipercaya.
+</p>
+
+<div class="highlight-box">
+<strong>Tujuan Pembelajaran:</strong>
+<p>
+Peserta didik mampu memahami data dan informasi, melakukan
+pencarian informasi secara efektif, mengumpulkan data, serta
+memeriksa kebenaran informasi dari sumber yang terpercaya.
+</p>
+</div>
+
+<div class="interactive-tool">
+<h4>💡 Pertanyaan Pemantik</h4>
+<p>Apakah semua berita yang viral di media sosial pasti benar?</p>
+
+<button class="btn-action"
+onclick="alert('Tidak! Informasi harus diperiksa melalui sumber terpercaya sebelum dipercaya atau dibagikan.')">
+Lihat Jawaban
+</button>
+</div>
+
+</section>
+
+
+<!-- SLIDE 2 -->
+
+<section class="content-section">
+
+<h2>📖 2. Data dan Informasi</h2>
+
+<p>
+Data adalah kumpulan fakta mentah yang belum diolah.
+Informasi merupakan data yang telah diproses sehingga
+memiliki makna dan dapat digunakan untuk mengambil keputusan.
+</p>
+
+<div class="highlight-box">
+<strong>Contoh:</strong>
+<ul>
+<li>Data: 80, 85, 90, 75.</li>
+<li>Informasi: Nilai rata-rata siswa adalah 82,5.</li>
+</ul>
+</div>
+
+<div class="interactive-tool">
+<h4>✨ Perbedaan Data dan Informasi</h4>
+<button class="btn-action"
+onclick="alert('Data adalah fakta mentah, sedangkan informasi adalah data yang telah diolah dan memiliki arti.')">
+Tampilkan Perbedaan
+</button>
+</div>
+
+</section>
+
+
+<!-- SLIDE 3 -->
+
+<section class="content-section">
+
+<h2>🔎 3. Pencarian Informasi</h2>
+
+<p>
+Pencarian informasi merupakan kegiatan menemukan data
+atau pengetahuan yang dibutuhkan melalui berbagai sumber.
+Pencarian yang baik harus menggunakan kata kunci yang tepat.
+</p>
+
+<div class="highlight-box">
+<strong>Tips pencarian informasi:</strong>
+<ol>
+<li>Gunakan kata kunci yang spesifik.</li>
+<li>Pilih sumber yang terpercaya.</li>
+<li>Bandingkan beberapa hasil pencarian.</li>
+<li>Perhatikan tanggal publikasi.</li>
+</ol>
+</div>
+
+<div class="interactive-tool">
+<h4>💡 Contoh Kata Kunci</h4>
+<button class="btn-action"
+onclick="alert('Contoh kata kunci: dampak teknologi informasi terhadap pendidikan.')">
+Lihat Contoh
+</button>
+</div>
+
+</section>
+
+
+<!-- SLIDE 4 -->
+
+<section class="content-section">
+
+<h2>🌐 4. Mesin Pencari</h2>
+
+<p>
+Mesin pencari adalah layanan digital yang membantu pengguna
+menemukan informasi di internet berdasarkan kata kunci tertentu.
+</p>
+
+<div class="highlight-box">
+<strong>Contoh mesin pencari:</strong>
+<ul>
+<li>Google</li>
+<li>Bing</li>
+<li>Yahoo</li>
+<li>DuckDuckGo</li>
+</ul>
+</div>
+
+<div class="interactive-tool">
+<h4>🔍 Operator Pencarian</h4>
+<ul>
+<li><strong>site:</strong> Mencari pada situs tertentu.</li>
+<li><strong>filetype:</strong> Mencari jenis file tertentu.</li>
+<li><strong>intitle:</strong> Mencari kata dalam judul halaman.</li>
+</ul>
+
+<button class="btn-action"
+onclick="alert('Contoh: informatika filetype:pdf untuk mencari dokumen PDF tentang informatika.')">
+Coba Contoh
+</button>
+</div>
+
+</section>
+
+
+<!-- SLIDE 5 -->
+
+<section class="content-section">
+
+<h2>💻 5. Web Scraping</h2>
+
+<p>
+Web scraping adalah teknik pengumpulan data dari halaman
+website secara otomatis menggunakan program komputer.
+Data yang diperoleh dapat diolah menjadi informasi.
+</p>
+
+<div class="highlight-box">
+<strong>Manfaat Web Scraping:</strong>
+<ol>
+<li>Mempercepat pengumpulan data.</li>
+<li>Mengurangi pekerjaan manual.</li>
+<li>Membantu analisis data.</li>
+<li>Mengumpulkan informasi dalam jumlah besar.</li>
+</ol>
+</div>
+
+<div class="interactive-tool">
+<h4>🚀 Contoh Teknologi</h4>
+<p>Web scraping dapat dilakukan menggunakan Python dengan
+bantuan pustaka seperti Requests dan BeautifulSoup.</p>
+
+<button class="btn-action"
+onclick="alert('Requests digunakan untuk mengambil halaman web, sedangkan BeautifulSoup membantu membaca dan mengekstrak elemen HTML.')">
+Pelajari Teknologi
+</button>
+</div>
+
+</section>
+
+
+<!-- SLIDE 6 -->
+
+<section class="content-section">
+
+<h2>📊 6. Pengumpulan dan Pengolahan Data</h2>
+
+<p>
+Pengumpulan data merupakan proses memperoleh fakta dari
+berbagai sumber. Data kemudian diolah agar lebih mudah
+dipahami dan digunakan.
+</p>
+
+<div class="highlight-box">
+<strong>Tahapan pengolahan data:</strong>
+<ol>
+<li>Mengumpulkan data.</li>
+<li>Memeriksa kelengkapan data.</li>
+<li>Mengelompokkan data.</li>
+<li>Mengolah dan menganalisis data.</li>
+<li>Menyajikan hasil dalam bentuk tabel atau grafik.</li>
+</ol>
+</div>
+
+<div class="interactive-tool">
+<h4>💡 Mengapa Data Harus Diolah?</h4>
+<button class="btn-action"
+onclick="alert('Data perlu diolah agar lebih terstruktur, mudah dipahami, dan dapat membantu pengambilan keputusan.')">
+Lihat Penjelasan
+</button>
+</div>
+
+</section>
+
+
+<!-- SLIDE 7 -->
+
+<section class="content-section">
+
+<h2>🛡️ 7. Validasi Informasi</h2>
+
+<p>
+Validasi informasi merupakan proses memeriksa kebenaran,
+keakuratan, dan keandalan informasi sebelum digunakan
+atau disebarluaskan.
+</p>
+
+<div class="highlight-box">
+<strong>Metode CRAAP:</strong>
+<ul>
+<li><strong>Currency:</strong> Kapan informasi diterbitkan?</li>
+<li><strong>Relevance:</strong> Apakah informasi sesuai kebutuhan?</li>
+<li><strong>Authority:</strong> Siapa penulisnya?</li>
+<li><strong>Accuracy:</strong> Apakah informasi akurat?</li>
+<li><strong>Purpose:</strong> Apa tujuan informasi dibuat?</li>
+</ul>
+</div>
+
+<div class="interactive-tool">
+<h4>✨ Simulasi Validasi</h4>
+<p>Menemukan berita kesehatan yang belum jelas sumbernya?</p>
+
+<button class="btn-action"
+onclick="alert('Langkah tepat: cari sumber resmi, periksa penulis, tanggal, dan bandingkan dengan informasi dari lembaga terpercaya.')">
+Periksa Berita
+</button>
+</div>
+
+</section>
+
+
+<!-- SLIDE 8 -->
+
+<section class="content-section">
+
+<h2>🧠 8. Membaca Lateral</h2>
+
+<p>
+Membaca lateral adalah teknik memeriksa informasi dengan
+membandingkan berbagai sumber lain, bukan hanya membaca
+informasi dari satu halaman website.
+</p>
+
+<div class="highlight-box">
+<strong>Langkah membaca lateral:</strong>
+<ol>
+<li>Identifikasi klaim yang ditemukan.</li>
+<li>Buka tab baru pada mesin pencari.</li>
+<li>Cari informasi dari sumber terpercaya.</li>
+<li>Bandingkan hasil informasi.</li>
+<li>Tentukan apakah informasi dapat dipercaya.</li>
+</ol>
+</div>
+
+<div class="interactive-tool">
+<h4>💡 Uji Pemahaman</h4>
+<p>Mengapa kita perlu membandingkan informasi dari beberapa sumber?</p>
+
+<button class="btn-action"
+onclick="alert('Karena membandingkan sumber membantu mengetahui apakah informasi konsisten, akurat, dan dapat dipercaya.')">
+Lihat Jawaban
+</button>
+</div>
+
+</section>
+
+
+<!-- SLIDE 9 -->
+
+<section class="content-section">
+
+<h2>🔐 9. Keamanan Informasi</h2>
+
+<p>
+Keamanan informasi merupakan upaya menjaga data agar tidak
+disalahgunakan, dicuri, atau diakses oleh pihak yang tidak
+memiliki izin.
+</p>
+
+<div class="highlight-box">
+<strong>Cara menjaga keamanan informasi:</strong>
+<ul>
+<li>Gunakan kata sandi yang kuat.</li>
+<li>Jangan membagikan data pribadi sembarangan.</li>
+<li>Hindari tautan mencurigakan.</li>
+<li>Aktifkan autentikasi dua faktor.</li>
+<li>Gunakan jaringan internet yang aman.</li>
+</ul>
+</div>
+
+<div class="interactive-tool">
+<h4>🛡️ Tips Keamanan</h4>
+<button class="btn-action"
+onclick="alert('Jangan pernah memberikan kata sandi dan kode OTP kepada orang lain, termasuk pihak yang mengaku sebagai petugas resmi.')">
+Tips Penting
+</button>
+</div>
+
+</section>
+
+
+<!-- SLIDE 10 -->
+
+<section class="content-section">
+
+<h2>⭐ 10. Kesimpulan</h2>
+
+<p>
+Data dan informasi merupakan bagian penting dalam kehidupan
+digital. Kemampuan mencari, mengumpulkan, mengolah, serta
+memvalidasi informasi sangat diperlukan agar kita tidak
+mudah mempercayai informasi yang salah.
+</p>
+
+<div class="highlight-box">
+<strong>Kesimpulan Pembelajaran:</strong>
+<ol>
+<li>Memahami perbedaan data dan informasi.</li>
+<li>Menggunakan mesin pencari secara efektif.</li>
+<li>Memahami proses web scraping.</li>
+<li>Melakukan validasi informasi.</li>
+<li>Menerapkan membaca lateral.</li>
+<li>Menjaga keamanan informasi digital.</li>
+</ol>
+</div>
+
+<div class="interactive-tool">
+<h4>🎉 Selamat!</h4>
+<p>Kamu sudah menyelesaikan materi pembelajaran Bab 1.</p>
+<button class="btn-action" onclick="showSection(10)">
+Mulai Kuis →
+</button>
+</div>
+
+</section>
+
+
+<!-- KUIS INTERAKTIF -->
+
+<section class="content-section">
+
+<h2>📝 Kuis Evaluasi Bab 1</h2>
+
+<p>Jawablah 10 pertanyaan berikut untuk menguji pemahamanmu!</p>
+
+<div id="questions"></div>
+
+<button class="btn-action"
+style="width:100%;padding:16px"
+onclick="cekKuis()">
+✨ PERIKSA JAWABAN
+</button>
+
+<div id="hasil-kuis" class="highlight-box">
+<h2 id="skor-teks"></h2>
+<p id="evaluasi-teks"></p>
+<button class="btn-action" onclick="ulangKuis()">
+Ulangi Kuis
+</button>
+</div>
+
+</section>
+
+
+<!-- NAVIGASI BAWAH -->
+
+<div class="navigation-bottom">
+
+<button class="btn-action" onclick="sebelumnya()">
+← Sebelumnya
+</button>
+
+<button class="btn-action" onclick="berikutnya()">
+Selanjutnya →
+</button>
+
+</div>
+
+</main>
+</div>
+
+<footer>
+<p>✦ Informatika SMA/MA Kelas X ✦</p>
+<p>Disusun oleh: Ulfatul Izzah | 250212082</p>
+</footer>
+
+</div>
+
+
+<script>
+
+// MEMULAI PEMBELAJARAN
+
+function mulaiBelajar() {
+    document.getElementById("cover").style.display = "none";
+    document.getElementById("app").style.display = "block";
+    showSection(0);
+    window.scrollTo(0,0);
+}
+
+// KEMBALI KE HALAMAN AWAL
+
+function kembaliAwal() {
+    document.getElementById("app").style.display = "none";
+    document.getElementById("cover").style.display = "flex";
+    window.scrollTo(0,0);
+}
+
+// NAVIGASI MATERI
+
+let halaman = 0;
+
+function showSection(index) {
+
+    const sections = document.querySelectorAll(".content-section");
+    const buttons = document.querySelectorAll(".nav-btn");
+
+    if(index < 0 || index >= sections.length) return;
+
+    halaman = index;
+
+    sections.forEach((section,i) => {
+        section.classList.toggle("active",i === index);
+    });
+
+    buttons.forEach((button,i) => {
+        button.classList.toggle("active",i === index);
+    });
+
+    document.getElementById("progressBar").style.width =
+        ((index + 1) / sections.length * 100) + "%";
+
+    window.scrollTo({top:0,behavior:"smooth"});
+}
+
+// TOMBOL SEBELUMNYA
+
+function sebelumnya() {
+    if(halaman > 0) {
+        showSection(halaman - 1);
+    }
+}
+
+// TOMBOL SELANJUTNYA
+
+function berikutnya() {
+    const total = document.querySelectorAll(".content-section").length;
+
+    if(halaman < total - 1) {
+        showSection(halaman + 1);
+    }
+}
+
+
+// DATA KUIS
+
+const soal = [
+{
+    t:"Apa yang dimaksud dengan data?",
+    o:["Fakta mentah yang belum diolah","Informasi yang sudah dianalisis","Kesimpulan akhir"],
+    j:0
+},
+{
+    t:"Apa yang dimaksud dengan informasi?",
+    o:["Kumpulan angka saja","Data yang telah diolah dan memiliki makna","Data yang tidak berguna"],
+    j:1
+},
+{
+    t:"Apa fungsi mesin pencari?",
+    o:["Menghapus data","Menemukan informasi di internet","Membuat perangkat keras"],
+    j:1
+},
+{
+    t:"Operator filetype: digunakan untuk?",
+    o:["Mencari jenis file tertentu","Menghapus website","Mengubah kata sandi"],
+    j:0
+},
+{
+    t:"Apa pengertian web scraping?",
+    o:["Mengedit foto","Mengumpulkan data website secara otomatis","Membuat desain poster"],
+    j:1
+},
+{
+    t:"Salah satu pustaka Python untuk mengambil halaman web adalah?",
+    o:["Requests","PowerPoint","Photoshop"],
+    j:0
+},
+{
+    t:"Apa tujuan validasi informasi?",
+    o:["Membuat berita viral","Memeriksa kebenaran informasi","Menyebarkan informasi tanpa pemeriksaan"],
+    j:1
+},
+{
+    t:"Apa yang dimaksud membaca lateral?",
+    o:["Membaca satu situs saja","Membandingkan informasi dari berbagai sumber","Membaca judul saja"],
+    j:1
+},
+{
+    t:"Apa arti Authority dalam metode CRAAP?",
+    o:["Kewenangan atau kredibilitas sumber","Tanggal penerbitan","Tujuan informasi"],
+    j:0
+},
+{
+    t:"Bagaimana cara menjaga keamanan informasi?",
+    o:["Membagikan password","Memberikan kode OTP","Menggunakan kata sandi yang kuat"],
+    j:2
+}
+];
+
+
+// MENAMPILKAN SOAL
+
+function tampilkanSoal() {
+
+    const container = document.getElementById("questions");
+
+    container.innerHTML = "";
+
+    soal.forEach((item,i) => {
+
+        let html = `
+        <div class="interactive-tool">
+        <h4>${i+1}. ${item.t}</h4>
+        `;
+
+        item.o.forEach((opsi,j) => {
+            html += `
+            <label>
+            <input type="radio" name="q${i}" value="${j}">
+            ${opsi}
+            </label>
+            `;
+        });
+
+        html += `</div>`;
+
+        container.innerHTML += html;
+    });
+}
+
+
+// PERIKSA NILAI
+
+function cekKuis() {
+
+    let skor = 0;
+
+    for(let i=0;i<soal.length;i++) {
+
+        const jawaban = document.querySelector(
+            `input[name="q${i}"]:checked`
+        );
+
+        if(!jawaban) {
+            alert("Silakan jawab semua 10 pertanyaan terlebih dahulu!");
+            return;
+        }
+
+        if(Number(jawaban.value) === soal[i].j) {
+            skor++;
+        }
+    }
+
+    const nilai = skor * 10;
+
+    document.getElementById("hasil-kuis").style.display = "block";
+
+    document.getElementById("skor-teks").innerText =
+        "Nilai Kamu: " + nilai;
+
+    let pesan = "";
+
+    if(skor === 10) {
+        pesan = "🏆 Sempurna! Kamu sangat memahami materi!";
+    } else if(skor >= 8) {
+        pesan = "🎉 Hebat! Pemahamanmu sudah sangat baik!";
+    } else if(skor >= 6) {
+        pesan = "👍 Bagus! Terus tingkatkan belajarmu!";
+    } else {
+        pesan = "📚 Yuk, pelajari kembali materi dan coba lagi!";
+    }
+
+    document.getElementById("evaluasi-teks").innerText = pesan;
+
+    document.getElementById("hasil-kuis").scrollIntoView({
+        behavior:"smooth"
+    });
+}
+
+
+// ULANGI KUIS
+
+function ulangKuis() {
+
+    document.querySelectorAll('input[type="radio"]').forEach(input => {
+        input.checked = false;
+    });
+
+    document.getElementById("hasil-kuis").style.display = "none";
+
+    window.scrollTo({top:0,behavior:"smooth"});
+}
+
+
+// JALANKAN KUIS
+
+tampilkanSoal();
+
+</script>
+
+</body>
+</html>
